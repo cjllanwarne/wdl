@@ -90,7 +90,7 @@ grammar {
       r'~\{' -> :expression_placeholder_start @expression_placeholder
       enum {
         python: r'[^\"\n(\$\{)(~\{)]*'
-        java: "[^\"\\n(${)(~{)]*"
+        java: "(.*?)(?=\\$\\{|~\\{|\")"
         javascript: "[^\\\\\\\"\\n(${)(~{)]*"
       } -> :string
     }
@@ -101,7 +101,7 @@ grammar {
       r'~\{' -> :expression_placeholder_start @expression_placeholder
       enum {
         python: r'[^\'\n(\$\{)(~\{)]*'
-        java: "[^'\\n(${)(~{)]*"
+        java: "(.*?)(?=\\$\\{|~\\{|')"
         javascript: "[^'\\n(${)(~{)]*"
       } -> :string
     }
